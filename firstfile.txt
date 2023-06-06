@@ -1,0 +1,29 @@
+rented movies'
+
+let movie 1 = little mermaid
+let movie 2 = brother bear
+let movie 3 = hercules
+
+const perday = 3
+//couldnt i add an increment per day
+
+question 2
+
+let google = 400 perhour
+let amazon = 380 perhour
+let facebook = 350 perhour
+
+let pay = hr
+
+question 3
+
+
+question 4
+let prenimum = offer
+let 2 snacks = true
+let unexpiredsnacks = true
+
+if( 2snacks & unespired ){document write( product offer);}
+
+else(no offered)
+
