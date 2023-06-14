@@ -4,18 +4,38 @@ line
 comment
 */
 
-.fancy-header {
-    color: blue; /* single line comment */
-    text-decoration: underline;
+
+
+
+
+
+
+
+
+h1{
+    text-align: center;
+ text-decoration:underline;
+font-family: "Gurmukhi Sangam MN"
 }
-.head  {
 
-    color: blue; /
+* {background-color: blueviolet}
+
+ul{
+    list-style-type:upper-roman;
+text-align: center;
 
 }
-:root{
 
-    --red: #ff000;
+h2{
+
+    text-align: center;
 }
 
+ol{
 
+    list-style: ;
+}
+
+h6{
+    text-align: center;
+}
