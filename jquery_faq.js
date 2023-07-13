@@ -1,20 +1,20 @@
-$(() => {
+// $(() => {
 
 
     // jQuery...
 
-    $('body').append(`
-        <a href="#">Toggle Invisibility</a>
-    `);
-
-    $('a').on('click', () => {
-        $('dd').toggleClass('invisible');
-    });
-
-    // BONUS
-    $('dt').on('click', function() {
-        $(this).toggleClass('highlighted')
-    });
+    // $('body').append(`
+    //     <a href="#">Toggle Invisibility</a>
+    // `);
+    //
+    // $('a').on('click', () => {
+    //     $('dd').toggleClass('invisible');
+    // });
+    //
+    // // BONUS
+    // $('dt').on('click', function() {
+    //     $(this).toggleClass('highlighted')
+    // });
 
     // JS...
     //
@@ -64,18 +64,39 @@ $(() => {
 
 
 
+    // $('#highlightLast').click(function() {
+    //     $('ul li:last-child').css('background-color', 'yellow');
+    // });
+    //
+    //
+    // $('li').each(function(index) {
+    //     if (index % 2 !== 0) {
+    //         $(this).css('background-color', '#FF0');
+    //     }
+    // });
+    //
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-});
+//     $('button').click()
+//     $('li').css('background-color', '#FF0');
+//     $('li').parent().css('background-color', '#0F0');
+//
+//     $(document).ready(function() {
+//         $('#yellow-btn').click(function() {
+//             $('ul li:last-child').css('background-color', 'yellow');
+//         });
+//     });
+//
+//     $(document).ready(function() {
+//         $("h3").click(function() {
+//             $('#national-parks').children().css('font-weight', 'bold');
+//         });
+//     });
+//
+//    $(document).ready(function() {
+//    $( "li").click( function(){
+//        $(this).parents('ul').children('li:first').css('color', 'blue');
+//    });
+// });
+// //
+// //
+// })
