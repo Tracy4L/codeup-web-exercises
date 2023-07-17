@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Online Store</title>
 </head>
 <body>
-<link rel="stylesheet" href="../jquery_faq.css">
+
 <h1>My Tool Store</h1>
 
 <table id="products">
@@ -19,42 +18,56 @@
   </thead>
   <tbody id="insertProducts"></tbody>
 </table>
+<button id="refresh-button">Refresh</button>
 
-<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
 <script>
   (function() {
     "use strict";
-    // TODO: Create an AJAX GET request for the file under data/inventory.json
-    $.ajax("data/inventory.json").done((tools) =>{
+    // Global Variables
+    const productContainer = document.querySelector('#insertProducts');
+    const refreshButton = document.querySelector('#refresh-button');
 
-      console.log(tools);
-    });
+    // Functions
+    // TODO: Create an AJAX GET request for the file under data/inventory.json
+    function loadInventory() {
+      $.ajax('data/inventory.json').done((data) => {
+        console.log(data);
+        appendInventory(data);
+      })
+    }
+
     // TODO: Take the data from inventory.json and append it to the products table
-   function refresh(){
-    $.ajax("data/inventory.json")
-            .done((tools) => {
-              const productsTable = $("#insertProducts");
-              tools.forEach((tool) => {
-                const row = $("<tr>");
-                const title = $("<td>").text(tool.title);
-                const qty = $("<td>").text(tool.qty);
-                const price = $("<td>").text(tool.price);
-                const categories = $("<td>").text(tool.categories.join(", "));
-                row.append(title, qty, price, categories);
-                productsTable.append(row);
-              });
-            });
-}
+
+    function appendInventory(inventoryList) {
+      productContainer.innerHTML = '';
+      for(const inventoryItem of inventoryList) {
+        console.log(inventoryItem.categories.toString())
+        const tableRow = document.createElement('tr');
+        tableRow.innerHTML = `
+          <td>${inventoryItem.title}</td>
+          <td>${inventoryItem.quantity}</td>
+          <td>${inventoryItem.price}</td>
+          <td>${inventoryItem.categories.join(' | ')}</td>
+        `;
+        productContainer.appendChild(tableRow);
+      }
+    }
     //       HINT: Your data should come back as a JSON object; use console.log() to inspect
     //             its contents and fields
     //       HINT: You will want to target #insertProducts for your new HTML elements
+
+
+    // Events
+    refreshButton.addEventListener('click', loadInventory);
+
+
+    // Run When App Loads
+    loadInventory();
+
   })();
 </script>
-<button id="refresh-btn">Refresh Inventory</button>
 
-
-
-<!--Linking any JS scripts-->
-<script src="../jquery_faq.js"></script>
 </body>
 </html>

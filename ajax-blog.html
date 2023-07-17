@@ -2,12 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>AJAX Blog</title>
+    <style>
+        .red {
+            background-color: red;
+        }
+    </style>
 </head>
 <body>
-
 <div id="posts"></div>
-<script src="ajax.js"></script>
 
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $(() => {
+        // Global Variables
+        const blogPostsContainer = document.querySelector('#posts');
+
+        // Functions
+        function loadBlogPosts() {
+            $.ajax('data/blog.json').done((data) => {
+                console.log(data);
+                renderBlogPosts(data);
+            });
+        }
+
+        function renderBlogPosts(blogPostsList) {
+            blogPostsContainer.innerHTML = '';
+            for(const blogPost of blogPostsList) {
+                const blogPostContainer = document.createElement('div');
+                blogPostContainer.innerHTML = `
+                    <h1 class="red">${blogPost.title}</h1>
+                    <h2>${blogPost.date}</h2>
+                    <p>${blogPost.content}</p>
+                    <p>${blogPost.categories}</p>
+                `;
+                blogPostsContainer.appendChild(blogPostContainer);
+            }
+        }
+
+        // Events
+
+
+
+        // Runs When App Loads
+        loadBlogPosts();
+
+
+    });
+</script>
 </body>
 </html>
