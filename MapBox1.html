@@ -2,38 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mapbox GL</title>
-
-    <!-- Mapbox JS -->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
-    <!-- Mapbox CSS -->
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="mapbox_maps_api.css">
-    <link rel="stylesheet" href="forecast.css"> <!-- Add a custom CSS file for the forecast cards -->
-    <script src="js/keys.js"></script>
-    <script src="mapbox_maps_api.js"></script>
-
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
-    <script src="../WeatherMapProject/mapbox_maps_api_.js"></script>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="MapBox.css">
+    <script src="MapBox1.js"></script>
 </head>
-
 <body>
+
+
+<div class="container">
+    <p id="current-time">Current time will be displayed here.</p>
+    <div class="current-info">
+
+        <div class="date-container">
+            <div class="time" id="time">
+                 <span id="am-pm">PM</span>
+            </div>
+            <div class="date" id="date">
+                Monday, 25 May
+            </div>
+
+            <div class="others" id="current-weather-items">
+
+
+            </div>
+        </div>
+
+        <div class="place-container">
+            <div class="time-zone" id="time-zone">Asia/Kolkata</div>
+            <div id="country" class="country">IN</div>
+        </div>
+    </div>
+
 
 </div>
 
-<div class="container">
+<div class="future-forecast">
     <div class="today" id="current-temp">
-        <img src="http://openweathermap.org/img/wn/10d@2x.png-background" alt="weather icon" class="w-icon">
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
         <div class="other">
             <div class="day">Monday</div>
             <div class="temp">Night - 25.6&#176; C</div>
             <div class="temp">Day - 35.6&#176; C</div>
         </div>
     </div>
+
 
     <div class="weather-forecast" id="weather-forecast">
         <div class="weather-forecast-item">
@@ -68,29 +83,13 @@
         </div>
 
     </div>
-</div>
 
-
-<!-- Map as the background -->
-<div id="map"></div>
-
-<div class="page-wrapper">
-    <h1></h1>
-    <div id="weather-info"></div>
-
-    <!-- Add forecast cards container -->
-    <div class="weather-forecast" id="weather-forecast">
-        <!-- Forecast cards content goes here -->
-    </div>
-
-    <!-- Other elements on the page, if any -->
-</div>
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-<!-- Scripts -->
-<script src="mapbox-geocoder-utils.js"></script>
-<script src="mapbox_maps_api.js"></script>
-<script src="forecast.js"></script> <!-- Add a custom JavaScript file for fetching and updating forecast data -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+
+<script src="MapBox1.js"></script>
 
 </body>
+
 </html>

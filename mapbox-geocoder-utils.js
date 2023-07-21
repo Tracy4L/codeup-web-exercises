@@ -26,6 +26,7 @@ function geocode(search, token) {
 }
 
 
+
 /***
  * reverseGeocode is a method to search for a physical address based on inputted coordinates
  * @param {object} coordinates is an object with properties "lat" and "lng" for latitude and longitude
@@ -51,3 +52,5 @@ function reverseGeocode(coordinates, token) {
             return data.features[0].place_name;
         });
 }
+
+

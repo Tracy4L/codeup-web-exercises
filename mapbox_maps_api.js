@@ -9,22 +9,35 @@ $(() => {
     // Functions
     // Function that initializes the map
     function initializeMap() {
-        mapboxgl.accessToken = MAPBOX_KEY;
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYmlndHJhY3kiLCJhIjoiY2xrMm9rdjJiMGV5MDNncnozeTk3eHZodCJ9.ylWFsBBKskVDkuOCjHmKeA';
+
 
         const mapOptions = {
             container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v12',
+            style: 'mapbox://styles/mapbox/dark-v11',
             zoom: 10,
             center: [-98.4916, 29.4252],
+            
         }
+
+
 
         return new mapboxgl.Map(mapOptions);
     }
+    map.addControl(
+        new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        })
+    );
 
-    // Function that creates a marker at Codeup
+
+    // Function that creates a Movable marker
     function createMarker() {
-        return new mapboxgl.Marker()
-            .setLngLat([-98.4916, 29.4260])
+        const marker = new mapboxgl.Marker({
+            draggable: true
+        })
+            .setLngLat([-98.489615, 29.426827])
             .addTo(map);
     }
 
@@ -38,6 +51,11 @@ $(() => {
                     <p>We can put anything we want</p>
                 </div>
             `);
+    }
+    function onDragEnd() {
+        const lngLat = marker.getLngLat();
+        coordinates.style.display = 'block';
+        coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
     }
 
     // Function that brings me to paris
@@ -74,6 +92,30 @@ $(() => {
     }
 
 
+
+// Function to add a new marker to the map.
+
+    // var marker = null; // Variable to store the marker reference.
+
+// Function to add a new draggable marker to the map.
+    function addDraggableMarker(longitude, latitude) {
+        if (marker) {
+            marker.remove(); // If there's an existing marker, remove it first.
+        }
+
+        marker = new mapboxgl.Marker({
+            draggable: true // Set the marker as draggable.
+        })
+            .setLngLat([longitude, latitude])
+            .addTo(map);
+
+        // Listen to the `dragend` event to update the marker's position after dragging.
+        marker.on('dragend', function() {
+            var lngLat = marker.getLngLat();
+            console.log('New marker position:', lngLat);
+            // You can use the `lngLat` values to update your database or perform any actions with the new marker position.
+        });
+    }
 
 
     // Events

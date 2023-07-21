@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Weather App</title>
+
+    <!-- Mapbox CSS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+
+        <link rel="stylesheet" href="ReactWeatherlMap.css">
+</head>
+<body>
+<div id="map" style="width: 8000px; height: 800px">
+
+</div>
+<div class="weather-app">
+    <div class="container">
+        <h3 class="brand">The Weather</h3>
+        <div>
+            <h1 class="temp">16#176;</h1>
+            <div class="city-time">
+                <h1 class="name">London</h1>
+                <small>
+                    <span class="time">06:09</span> -
+                    <span class="date">July 20, 2023</span>
+                </small>
+            </div>
+            <div class="weather">
+                <img
+                        src=""
+                        class="icon"
+                        alt="icon"
+                        width="50"
+                        height="50"
+                />
+                <span class="condition">Cloudy</span>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <form id="locationInput">
+            <input
+                    type="text"
+                    class="search"
+                    placeholder="SEARCH LOCATION....."
+            />
+            <button type="submit" class="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+        <ul class="cities">
+            <li class="city">New York</li>
+            <li class="city">California</li>
+            <li class="city">Paris</li>
+            <li class="city">Tokyo</li>
+        </ul>
+
+        <ul class="details">
+            <h4>Weather Details</h4>
+            <li>
+                <span>Cloudy</span>
+                <span class="cloud">89%</span>
+            </li>
+            <li>
+                <span>Humidity</span>
+                <span class="humidity">64%</span>
+            </li>
+            <li>
+                <span>Wind</span>
+                <span class="wind">8 km/h</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Cards for displaying temperature of five cities -->
+    <div class="temperature-cards">
+        <div class="temperature-card">
+            <h2 class="city-name">City 1</h2>
+            <p class="temperature">25°C</p>
+        </div>
+        <div class="temperature-card">
+            <h2 class="city-name">City 2</h2>
+            <p class="temperature">20°C</p>
+        </div>
+        <div class="temperature-card">
+            <h2 class="city-name">City 3</h2>
+            <p class="temperature">22°C</p>
+        </div>
+        <div class="temperature-card">
+            <h2 class="city-name">City 4</h2>
+            <p class="temperature">18°C</p>
+        </div>
+        <div class="temperature-card">
+            <h2 class="city-name">City 5</h2>
+            <p class="temperature">19°C</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="js/keys.js"></script>
+<script src="../codeup-web-exercises/ReactWeatherMap.js"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

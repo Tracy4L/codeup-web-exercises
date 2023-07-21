@@ -1,60 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-
-    <title>Document</title>
-    <link rel="stylesheet" href="Weather_Map.css">
+    <title>5-Day Weather Forecast</title>
 </head>
-<body onload="DefaultScreen()">
-<center>
-    <h1 id="Para1">5 Days Weather Forecast</h1>
-    <p id="inputContainer">City: <input type="text" id="cityInput"></p>
-    <button type="button" onclick="GetInfo()">Click Me</button>
-    <h2 id="cityName">---London---</h2>
-</center>
+<body>
+<h1>5-Day Weather Forecast</h1>
+<div id="forecast-container"></div>
 
-<div id = "weatherContainer">
-    <div id="iconsContainer">
-        <div class = "icons">
-            <p class="weather" id="day1"></p>
-            <div class="image"><img src="dots.png" class="imgClass" id="img1"></div>
-            <p class="minValues" id="day1Min">Loading...</p>
-            <p class="maxValues" id="day1Max">Loading...</p>
-        </div>
-        <div class = "icons">
-            <p class="weather" id="day2"></p>
-            <div class="image"><img src="dots.png" class="imgClass" id="img2"></div>
-            <p class="minValues" id="day2Min">Loading...</p>
-            <p class="maxValues" id="day2Max">Loading...</p>
-        </div>
-        <div class = "icons">
-            <p class="weather" id="day3"></p>
-            <div class="image"><img src="dots.png" class="imgClass" id="img3"></div>
-            <p class="minValues" id="day3Min">Loading...</p>
-            <p class="maxValues" id="day3Max">Loading...</p>
-        </div>
-        <div class = "icons">
-            <p class="weather" id="day4"></p>
-            <div class="image"><img src="dots.png" class="imgClass" id="img4"></div>
-            <p class="minValues" id="day4Min">Loading...</p>
-            <p class="maxValues" id="day4Max">Loading...</p>
-        </div>
-        <div class = "icons">
-            <p class="weather" id="day5"></p>
-            <div class="image"><img src="dots.png" class="imgClass" id="img5"></div>
-            <p class="minValues" id="day5Min">Loading...</p>
-            <p class="maxValues" id="day5Max">Loading...</p>
-        </div>
-    </div>
-</div>
+<script>
+    function getFiveDayForecast(apiKey, latitude, longitude) {
+        const apiUrl = `api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`;
 
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => displayForecast(data.daily))
+            .catch(error => console.error('Error fetching data:', error));
+    }
 
-<script src="main.js"></script>
+    function displayForecast(forecastData) {
+        const forecastContainer = document.getElementById('forecast-container');
 
+        forecastData.forEach(day => {
+            const date = new Date(day.dt * 1000); // Convert UNIX timestamp to JS Date object
+            const tempMin = day.temp.min;
+            const tempMax = day.temp.max;
+            const weatherDescription = day.weather[0].description;
 
+            const forecastCard = document.createElement('div');
+            forecastCard.innerHTML = `
+          <p>Date: ${date.toDateString()}</p>
+          <p>Min Temp: ${tempMin}°C</p>
+          <p>Max Temp: ${tempMax}°C</p>
+          <p>Weather: ${weatherDescription}</p>
+          <hr>
+        `;
+
+            forecastContainer.appendChild(forecastCard);
+        });
+    }
+
+    // Replace 'YOUR_API_KEY', 'LATITUDE', and 'LONGITUDE' with your actual values
+    const apiKey = 'YOUR_API_KEY';
+    const latitude = 'LATITUDE';
+    const longitude = 'LONGITUDE';
+
+    getFiveDayForecast(apiKey, latitude, longitude);
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <link rel="stylesheet" href="style.css">-->
+
+<!--    <title>Document</title>-->
+<!--    <link rel="stylesheet" href="Weather_Map.css">-->
+<!--</head>-->
+<!--<body onload="DefaultScreen()">-->
+<!--<center>-->
+<!--    <h1 id="Para1">5 Days Weather Forecast</h1>-->
+<!--    <p id="inputContainer">City: <input type="text" id="cityInput"></p>-->
+<!--    <button type="button" onclick="GetInfo()">Click Me</button>-->
+<!--    <h2 id="cityName">-&#45;&#45;London-&#45;&#45;</h2>-->
+<!--</center>-->
+
+<!--<div id = "weatherContainer">-->
+<!--    <div id="iconsContainer">-->
+<!--        <div class = "icons">-->
+<!--            <p class="weather" id="day1"></p>-->
+<!--            <div class="image"><img src="dots.png" class="imgClass" id="img1"></div>-->
+<!--            <p class="minValues" id="day1Min">Loading...</p>-->
+<!--            <p class="maxValues" id="day1Max">Loading...</p>-->
+<!--        </div>-->
+<!--        <div class = "icons">-->
+<!--            <p class="weather" id="day2"></p>-->
+<!--            <div class="image"><img src="dots.png" class="imgClass" id="img2"></div>-->
+<!--            <p class="minValues" id="day2Min">Loading...</p>-->
+<!--            <p class="maxValues" id="day2Max">Loading...</p>-->
+<!--        </div>-->
+<!--        <div class = "icons">-->
+<!--            <p class="weather" id="day3"></p>-->
+<!--            <div class="image"><img src="dots.png" class="imgClass" id="img3"></div>-->
+<!--            <p class="minValues" id="day3Min">Loading...</p>-->
+<!--            <p class="maxValues" id="day3Max">Loading...</p>-->
+<!--        </div>-->
+<!--        <div class = "icons">-->
+<!--            <p class="weather" id="day4"></p>-->
+<!--            <div class="image"><img src="dots.png" class="imgClass" id="img4"></div>-->
+<!--            <p class="minValues" id="day4Min">Loading...</p>-->
+<!--            <p class="maxValues" id="day4Max">Loading...</p>-->
+<!--        </div>-->
+<!--        <div class = "icons">-->
+<!--            <p class="weather" id="day5"></p>-->
+<!--            <div class="image"><img src="dots.png" class="imgClass" id="img5"></div>-->
+<!--            <p class="minValues" id="day5Min">Loading...</p>-->
+<!--            <p class="maxValues" id="day5Max">Loading...</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<script src="main.js"></script>-->
+
+
+<!--</body>-->
+<!--</html>-->
