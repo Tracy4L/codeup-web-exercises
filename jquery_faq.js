@@ -71,11 +71,11 @@
     //
     // $('li').each(function(index) {
     //     if (index % 2 !== 0) {
-    //         $(this).css('background-color', '#FF0');
-    //     }
-    // });
-    //
-
+//     //         $(this).css('background-color', '#FF0');
+//     //     }
+//     // });
+//     //
+//
 //     $('button').click()
 //     $('li').css('background-color', '#FF0');
 //     $('li').parent().css('background-color', '#0F0');
@@ -97,6 +97,13 @@
 //        $(this).parents('ul').children('li:first').css('color', 'blue');
 //    });
 // });
-// //
-// //
-// })
+// // //
+// // //
+// // })
+
+const isDivisibleBy3 = n => n % 3 === 0;
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+console.log(numbers.filter(isDivisibleBy3));
+console.log(numbers);
